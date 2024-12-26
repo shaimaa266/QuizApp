@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         "london",
         "rabat",
         "ryad",
+        "tokyo",
         "berlin")
 
     val itemsMaster=items.toMutableList()
@@ -96,6 +97,7 @@ class MainActivity : AppCompatActivity() {
         answerText.isEnabled=true
     }
 
+    @SuppressLint("SetTextI18n")
     fun next(view: View) {
         val answer=answerText.selectedItem.toString().lowercase()
         if(answerText.selectedItemPosition==0){
@@ -115,13 +117,13 @@ class MainActivity : AppCompatActivity() {
         }else{
             Toast.makeText(this, "score=$score", Toast.LENGTH_LONG).show()
             nextButton.isEnabled=false
-           // if (score>countries.size/2){
-              //  player= MediaPlayer.create(this,R.raw.success)
-               // player?.start()
-           // }else{
-               // player= MediaPlayer.create(this,R.raw.fail)
-                //player?.start()
-            //}
+            if (score>countries.size/2){
+                player= MediaPlayer.create(this,R.raw.success)
+                player?.start()
+            }else{
+                player= MediaPlayer.create(this,R.raw.fail)
+                player?.start()
+            }
         }
 
         answerText.setSelection(0)
